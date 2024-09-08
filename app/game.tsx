@@ -46,7 +46,7 @@ export default function Game({imageUrl}:{imageUrl: string}) {
       {isMounted && gameStatus !== 'waiting' && (
         <div className="flex flex-wrap justify-center w-full my-10">
           <div className="flex">
-            <div className="hidden lg:flex mt-2 px-4 lg:w-40 lg:flex-col lg:gap-4">
+            <div className="hidden md:flex mt-2 px-4 md:w-40 md:flex-col md:gap-4">
               <div>
                 <div className="font-bold">Score </div>
                 <div className="text-yellow-400 font-semibold text-sm">
