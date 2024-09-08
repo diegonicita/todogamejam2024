@@ -1,0 +1,176 @@
+{
+    "frames": {
+        "bronze_1.png": {
+            "frame": {
+                "x": 707,
+                "y": 296,
+                "w": 84,
+                "h": 84
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 84,
+                "h": 84
+            },
+            "sourceSize": {
+                "w": 84,
+                "h": 84
+            }
+        },
+        "bronze_2.png": {
+            "frame": {
+                "x": 826,
+                "y": 206,
+                "w": 66,
+                "h": 84
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 66,
+                "h": 84
+            },
+            "sourceSize": {
+                "w": 66,
+                "h": 84
+            }
+        },
+        "bronze_3.png": {
+            "frame": {
+                "x": 899,
+                "y": 116,
+                "w": 50,
+                "h": 84
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 50,
+                "h": 84
+            },
+            "sourceSize": {
+                "w": 50,
+                "h": 84
+            }
+        },
+        "bronze_4.png": {
+            "frame": {
+                "x": 670,
+                "y": 406,
+                "w": 14,
+                "h": 84
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 14,
+                "h": 84
+            },
+            "sourceSize": {
+                "w": 14,
+                "h": 84
+            }
+        },
+        "wingMan1.png": {
+            "frame": {
+                "x": 382,
+                "y": 635,
+                "w": 174,
+                "h": 126
+            }
+        },
+        "wingMan2.png": {
+            "frame": {
+                "x": 0,
+                "y": 1879,
+                "w": 206,
+                "h": 107
+            }
+        },
+        "wingMan3.png": {
+            "frame": {
+                "x": 0,
+                "y": 1559,
+                "w": 216,
+                "h": 101
+            }
+        },
+        "wingMan4.png": {
+            "frame": {
+                "x": 0,
+                "y": 1456,
+                "w": 216,
+                "h": 101
+            }
+        },
+        "wingMan5.png": {
+            "frame": {
+                "x": 382,
+                "y": 510,
+                "w": 182,
+                "h": 123
+            }
+        },
+        "sun1.png": {
+            "frame": {
+                "x": 532,
+                "y": 913,
+                "w": 142,
+                "h": 148
+            }
+        },
+        "sun2.png": {
+            "frame": {
+                "x": 421,
+                "y": 1390,
+                "w": 142,
+                "h": 148
+            }
+        }
+    },
+    "animations": {
+        "coin": [
+            "bronze_1.png",
+            "bronze_2.png",
+            "bronze_3.png",
+            "bronze_4.png",
+            "bronze_3.png",
+            "bronze_2.png",
+            "bronze_1.png"
+        ],
+        "fly": [
+            "wingMan1.png",
+            "wingMan2.png",
+            "wingMan3.png",
+            "wingMan4.png",
+            "wingMan5.png",
+            "wingMan4.png",
+            "wingMan3.png",
+            "wingMan2.png"
+        ],
+        "sun": [
+            "sun1.png",
+            "sun2.png"
+        ]
+    },
+    "meta": {
+        "app": "TexturePacker",
+        "version": "1.0",
+        "image": "spritesheet.png",
+        "format": "RGBA8888",
+        "size": {
+            "w": 2048,
+            "h": 2048
+        },
+        "scale": "1"
+    }
+}
