@@ -17,8 +17,8 @@ export default function Game({
 }: {
   imageUrl: string
   slug: string
-  setImageUrl: (url: string) => void
-  setForceUpdate: () => void
+  setImageUrl: (url: string | undefined) => void
+  setForceUpdate: (forceUpdate: number) => void
   forceUpdate: number
 }) {
   const { isMounted } = useMounted()
