@@ -15,18 +15,20 @@ export const useCreateImage = () => {
     const fetchData = async () => {
       try {
         const url = process.env.NEXT_PUBLIC_API_LOCAL
-        const res1 = await fetch(`${url}/api/create`)
+        const res1 = await fetch(`${url}/api/create`, { cache: 'no-store' })
         const data1 = await res1.json()
         console.log(data1)
-         const id = data1.result
-         console.log(id)
-         setSlug(data1.slug)
-         await sleep(5000)
+        const id = data1.result
+        console.log(id)
+        setSlug(data1.slug)
+        await sleep(5000)
 
-         const res2 = await fetch(`${url}/api/image/${id}`)
-         const data2 = await res2.json()
-         console.log(data2)
-         setImageUrl(data2.result.assets[0].url)
+        const res2 = await fetch(`${url}/api/image/${id}`, {
+          cache: 'no-store',
+        })
+        const data2 = await res2.json()
+        console.log(data2)
+        setImageUrl(data2.result.assets[0].url)
         // setImageUrl(
         //   'https://dev.gaxoslabs.ai/api/connect/v1/download/9bdabd17-6b72-439b-8ac8-cba2dd1c2f85',
         // )
