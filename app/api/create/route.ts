@@ -1,14 +1,16 @@
 import type { NextRequest } from 'next/server'
 import { headers } from 'next/headers'
 import { generateSlug } from 'random-word-slugs'
+import { randomInt } from 'node:crypto'
 
-export async function GET(request: NextRequest) {
+export async function POST(request: NextRequest) {
   const baseURL = process.env.API_URL
   const apiKey = process.env.API_KEY
   const apiId = process.env.API_ID
-
-  const slug = generateSlug(4, { format: 'title' })
-  const slug_modified = `${slug}but like a planet in the sky with an creature from another planet or alien in front of the image`
+  const randomSeed = randomInt(100000)
+  // const slug = generateSlug(4, { format: 'title'})
+  const data = await request.json()
+  const slug_modified = `${data.slug} but like a planet in the sky with an creature from another planet or alien in front of the image`
 
   const url = `${baseURL}/v1/request`
 
@@ -60,5 +62,10 @@ export async function GET(request: NextRequest) {
 
   const result = await response.json()
 
-  return Response.json({ status: 200, success: true, result: result, slug: slug })
+  return Response.json({
+    status: 200,
+    success: true,
+    result: result,
+    slug: data.slug,
+  })
 }

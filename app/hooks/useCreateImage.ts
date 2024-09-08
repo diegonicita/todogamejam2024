@@ -1,10 +1,13 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { generateSlug } from 'random-word-slugs'
 
 export const useCreateImage = () => {
   const [imageUrl, setImageUrl] = useState<string | undefined>(undefined)
   const [slug, setSlug] = useState<string | undefined>(undefined)
   const [forceUpdate, setForceUpdate] = useState(0)
+
+  const _slug = generateSlug(4, { format: 'title' })
 
   const sleep = (ms: number) => {
     return new Promise((resolve) => setTimeout(resolve, ms))
@@ -15,12 +18,19 @@ export const useCreateImage = () => {
     const fetchData = async () => {
       try {
         const url = process.env.NEXT_PUBLIC_API_LOCAL
-        const res1 = await fetch(`${url}/api/create`, { cache: 'no-store' })
+        const res1 = await fetch(`${url}/api/create`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ slug: _slug }),
+        })
+
         const data1 = await res1.json()
         console.log(data1)
         const id = data1.result
-        console.log(id)
-        setSlug(data1.slug)
+        // console.log(id)
+        setSlug(_slug)
         await sleep(5000)
 
         const res2 = await fetch(`${url}/api/image/${id}`, {
