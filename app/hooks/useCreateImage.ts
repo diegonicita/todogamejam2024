@@ -13,21 +13,21 @@ export const useCreateImage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        //   const res1 = await fetch('http://localhost:3000/api/create')
-        //   const data1 = await res1.json()
-        //   console.log(data1)
-        //   const id = data1.result
-        //   console.log(id)
-        //   setSlug(data1.slug)
-        //   await sleep(5000)
+        const res1 = await fetch(`${process.env.API_LOCAL}/api/create`)
+        const data1 = await res1.json()
+        console.log(data1)
+        const id = data1.result
+        console.log(id)
+        setSlug(data1.slug)
+        await sleep(5000)
 
-        //   const res2 = await fetch(`http://localhost:3000/api/image/${id}`)
-        //   const data2 = await res2.json()
-        //   console.log(data2)
-        //   setImageUrl(data2.result.assets[0].url)
-        setImageUrl(
-          'https://dev.gaxoslabs.ai/api/connect/v1/download/9bdabd17-6b72-439b-8ac8-cba2dd1c2f85',
-        )
+        const res2 = await fetch(`${process.env.API_LOCAL}/api/image/${id}`)
+        const data2 = await res2.json()
+        console.log(data2)
+        setImageUrl(data2.result.assets[0].url)
+        // setImageUrl(
+        //   'https://dev.gaxoslabs.ai/api/connect/v1/download/9bdabd17-6b72-439b-8ac8-cba2dd1c2f85',
+        // )
         //updateSrc(data2.result.assets[0].url)
       } catch (error) {
         console.error('Error fetching data:', error)
