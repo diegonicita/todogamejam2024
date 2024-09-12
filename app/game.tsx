@@ -12,37 +12,32 @@ import dynamic from 'next/dynamic'
 import HumanController from './components/humans/humanController'
 import Heart from './components/svgs/heart'
 import GrayHeart from './components/svgs/grayHeart'
+import Screenshot from './components/screenshot/screenshot'
 
 const Music = dynamic(() => import('./components/music/music'))
 
-export default function Game({imageUrl}:{imageUrl: string}) {
+export default function Game({ imageUrl }: { imageUrl: string }) {
   const { isMounted } = useMounted()
   const {
     screenHeight,
     screenWidth,
     gameStatus,
-    heroHealth,
-    heroLifes,
-    heroScore,
+    score,
     restartGame,
+    imageDataUrl,
   } = useStore()
-  
-  console.log('render game') 
-
-  const { updateSrc, restartGameEnemies } = useStoreEnemies()
-  const { restartHero } = useStoreHero()   
+  const { updateSrc, restartEnemies } = useStoreEnemies()
+  const { restartHero, health, lifes } = useStoreHero()
 
   const handleRestart = () => {
     restartGame()
-    restartGameEnemies()
+    restartEnemies()
     restartHero()
   }
 
-  console.log(gameStatus)
-
   return (
     <div className="flex justity-center text-primary text-lg">
-      {isMounted && <Music gameStatus={gameStatus} />}
+      {/* {isMounted && <Music gameStatus={gameStatus} />} */}
       {isMounted && gameStatus !== 'waiting' && (
         <div className="flex flex-wrap justify-center w-full my-10">
           <div className="flex">
@@ -50,24 +45,24 @@ export default function Game({imageUrl}:{imageUrl: string}) {
               <div>
                 <div className="font-bold">Score </div>
                 <div className="text-yellow-400 font-semibold text-sm">
-                  {heroScore} points
+                  {score} points
                 </div>
               </div>
               <div>
                 <div className="font-bold mb-1">Lives</div>
                 <div className="flex">
-                  {heroLifes > 0 ? <Heart /> : <GrayHeart />}
-                  {heroLifes > 1 ? <Heart /> : <GrayHeart />}
-                  {heroLifes > 2 ? <Heart /> : <GrayHeart />}
-                  {heroLifes > 3 ? <Heart /> : <GrayHeart />}
-                  {heroLifes > 4 ? <Heart /> : <GrayHeart />}
+                  {lifes > 0 ? <Heart /> : <GrayHeart />}
+                  {lifes > 1 ? <Heart /> : <GrayHeart />}
+                  {lifes > 2 ? <Heart /> : <GrayHeart />}
+                  {lifes > 3 ? <Heart /> : <GrayHeart />}
+                  {lifes > 4 ? <Heart /> : <GrayHeart />}
                 </div>
               </div>
               <div className="w-4/5 mx-auto">
                 <div className="font-bold"> Health </div>
                 <progress
                   className="progress progress-success"
-                  value={heroHealth}
+                  value={health}
                   max="100"
                 />
               </div>
@@ -75,8 +70,12 @@ export default function Game({imageUrl}:{imageUrl: string}) {
               <div className="btn btn-accent" onClick={handleRestart}>
                 Menu Principal
               </div>
+              {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+              <div className="btn btn-accent" onClick={handleRestart}>
+                Tomar una Foto{' '}
+              </div>
             </div>
-            <div className="shadow-2xl bg-primary border border-primary rounded-3xl p-4">
+            <div className="relative dwshadow-2xl bg-primary border border-primary rounded-3xl p-4">
               <Stage
                 width={screenWidth}
                 height={screenHeight}
@@ -87,15 +86,16 @@ export default function Game({imageUrl}:{imageUrl: string}) {
                     image={imageUrl}
                     x={0}
                     y={0}
-                    width={650}
-                    height={650}
+                    width={800}
+                    height={800}
+                    scale={1.6}
                     anchor={{ x: 0, y: 0 }}
                   />
                 )}
                 <EnemyController />
                 <HumanController />
                 <HeroController />
-
+                <Screenshot />
                 {gameStatus === 'gameOver' && (
                   <Container x={200} y={150}>
                     <Text
@@ -119,6 +119,12 @@ export default function Game({imageUrl}:{imageUrl: string}) {
                   </Container>
                 )}
               </Stage>
+              <div className="flex justify-center my-8 text-neutral flex-col items-center">
+                <div>Screen Shot</div>
+                <div className="h-96 w-96 border-4 border-red-500">
+                  <img src={imageDataUrl} alt="Generated Texture" />
+                </div>
+              </div>
             </div>
           </div>
         </div>

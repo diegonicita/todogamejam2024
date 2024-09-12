@@ -18,7 +18,7 @@ type StateType = {
   enemies: Entity[]
   move: (id: number, delta: number) => void
   updateSrc: (url: string) => void
-  restartGameEnemies: () => void
+  restartEnemies: () => void
 }
 
 const useStoreEnemies = create<StateType>((set, get) => {
@@ -137,7 +137,7 @@ const useStoreEnemies = create<StateType>((set, get) => {
         }))
         return { enemies: updatedEnemies }
       }),
-    restartGameEnemies: () => {
+    restartEnemies: () => {
       set({
         enemies: [
           {

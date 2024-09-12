@@ -2,10 +2,12 @@
 import Game from './game'
 import Intro from './intro'
 import { useCreateImage } from './hooks/useCreateImage'
+import useStore from './store/useStore'
 
 export default function Home() {
   const { imageUrl, setImageUrl, forceUpdate, setForceUpdate, slug } =
     useCreateImage()
+  const { gameStatus } = useStore()
 
   return (
     <main className="m-8 text-center">
@@ -19,6 +21,10 @@ export default function Home() {
         />
       )}
       {imageUrl && <Game imageUrl={imageUrl} />}
+      <div className="flex flex-col items-center justify-center w-full">
+        {' '}
+        Game Status: {gameStatus}{' '}
+      </div>
       {!imageUrl && (
         <div className="flex items-center justify-center gap-12 py-10">
           <div className="flex flex-col gap-6">

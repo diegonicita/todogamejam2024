@@ -11,11 +11,14 @@ type Entity = {
 
 type StateType = {
   hero: Entity
+  health: number
+  lifes: number
   move: (newX: number, newY: number) => void
   playingSound: { estado: 'start' | 'playing' | 'stop' }
   play: () => void
   checkCollisions: (enemies: Entity[]) => boolean
-  restartHero: () => void  
+  getDamage: () => void
+  restartHero: () => void
 }
 
 const useStoreHero = create<StateType>((set) => {
@@ -28,6 +31,8 @@ const useStoreHero = create<StateType>((set) => {
       speed: 5,
       size: 25,
     },
+    health: 10,
+    lifes: 1,
     move: (newX: number, newY: number) =>
       set((state) => ({
         hero: {
@@ -78,6 +83,20 @@ const useStoreHero = create<StateType>((set) => {
           size: 25,
         },
       })),
+    getDamage: () =>
+      set((state) => {
+        if (state.health <= 0) {
+          const newLifes = state.lifes - 1
+          if (newLifes <= 0) {
+            return {
+              health: 0,
+              lifes: newLifes,
+            }
+          }
+          return { health: 100, lifes: newLifes }
+        }
+        return { health: state.health - 1 }
+      }),
   }
 })
 

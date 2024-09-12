@@ -1,40 +1,31 @@
 import useStoreHero from '@/app/store/useStoreHero'
 import { AnimatedSprite } from '@pixi/react'
-import { useTick } from '@pixi/react'
-import { useEffect, useState } from 'react'
+import { useTick, useApp } from '@pixi/react'
+import { useEffect, useState, useRef } from 'react'
 import * as PIXI from 'pixi.js'
 import useStoreEnemies from '@/app/store/useStoreEnemies'
 import useStoreHumans from '@/app/store/useStoreHumans'
 import useStore from '@/app/store/useStore'
 
 const Hero = () => {
-  const {
-    gameStatus,
-    heroHealth,
-    addScore,
-    heroGetDamage,
-    heroLifes,
-    heroScore,
-  } = useStore()
-  const { move, play, playingSound, checkCollisions } = useStoreHero()
-  const x = useStoreHero((state) => state.hero.x)
-  const y = useStoreHero((state) => state.hero.y)
-  const dirX = useStoreHero((state) => state.hero.dirX)
-  const dirY = useStoreHero((state) => state.hero.dirY)
+  const { gameStatus, addScore, score, screenHeight, screenWidth } = useStore()
+  const { getDamage, move, play, playingSound, checkCollisions } =
+    useStoreHero()
+  const { x, y, dirX, dirY } = useStoreHero((state) => state.hero)
+  const { humans } = useStoreHumans()
+  const { enemies } = useStoreEnemies()
+  const [collisionWithEnemy, setCollisionWithEnemy] = useState(false)
+  const [collisionWithHuman, setCollisionWithHuman] = useState(false)
   const [flyingFrames, setFlyingFrames] = useState<PIXI.Texture[]>([])
   const [sunFrames, setSunFrames] = useState<PIXI.Texture[]>([])
   const [coinFrames, setCoinFrames] = useState<PIXI.Texture[]>([])
-  const { enemies } = useStoreEnemies()
-  const { humans } = useStoreHumans()
-  const [collisionWithEnemy, setCollisionWithEnemy] = useState(false)
-  const [collisionWithHuman, setCollisionWithHuman] = useState(false)
 
   useTick((delta) => {
     if (gameStatus === 'playing')
       move(x + dirX * delta * 1, y + dirY * delta * 1)
     const result1 = checkCollisions(enemies)
     setCollisionWithEnemy(result1)
-    if (result1 && gameStatus !== 'gameOver') heroGetDamage()
+    if (result1 && gameStatus !== 'gameOver') getDamage()
     const result2 = checkCollisions(humans)
     if (result2 && gameStatus !== 'gameOver') addScore()
     setCollisionWithHuman(result2)
