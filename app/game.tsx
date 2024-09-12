@@ -71,9 +71,9 @@ export default function Game({ imageUrl }: { imageUrl: string }) {
                 Menu Principal
               </div>
               {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
-              <div className="btn btn-accent" onClick={handleRestart}>
+              {/* <div className="btn btn-accent" onClick={handleRestart}>
                 Tomar una Foto{' '}
-              </div>
+              </div> */}
             </div>
             <div className="relative dwshadow-2xl bg-primary border border-primary rounded-3xl p-4">
               <Stage
@@ -119,12 +119,12 @@ export default function Game({ imageUrl }: { imageUrl: string }) {
                   </Container>
                 )}
               </Stage>
-              <div className="flex justify-center my-8 text-neutral flex-col items-center">
+              {/* <div className="flex justify-center my-8 text-neutral flex-col items-center">
                 <div>Screen Shot</div>
                 <div className="h-96 w-96 border-4 border-red-500">
                   <img src={imageDataUrl} alt="Generated Texture" />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

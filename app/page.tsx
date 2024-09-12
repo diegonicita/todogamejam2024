@@ -22,7 +22,7 @@ export default function Home() {
       )}
       {imageUrl && <Game imageUrl={imageUrl} />}
       <div className="flex flex-col items-center justify-center w-full">
-        {' '}
+        
         Game Status: {gameStatus}{' '}
       </div>
       {!imageUrl && (

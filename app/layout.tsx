@@ -19,7 +19,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="navbar bg-primary text-primary-content justify-center">
           <div className="text-3xl">
-            React and Pixi: A Guide to Making Your Game
+            Fuera de Control (Nick3d)
           </div>
         </div>
         {children}
