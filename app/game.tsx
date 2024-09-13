@@ -88,7 +88,7 @@ export default function Game({ imageUrl }: { imageUrl: string }) {
                     y={0}
                     width={800}
                     height={800}
-                    scale={1.6}
+                    scale={1.2}
                     anchor={{ x: 0, y: 0 }}
                   />
                 )}
