@@ -1,5 +1,5 @@
 import React from 'react'
-import Enemy from './enemy'
+import Enemy from '@/app/components/enemies/enemy'
 import useStore from '@/app/store/useStoreEnemies'
 
 const EnemyController = () => {

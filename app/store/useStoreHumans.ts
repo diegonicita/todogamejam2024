@@ -1,7 +1,5 @@
 import { create } from 'zustand'
 import useStore from './useStore'
-import img1 from '@/public/chicken.png'
-import img2 from '@/public/parrot.png'
 
 type Entity = {
   x: number
@@ -19,7 +17,7 @@ type StateType = {
   updateSrc: (url: string) => void
 }
 
-const useStoreHumans = create<StateType>((set, get) => {
+const useStoreHumans = create<StateType>((set) => {
   // Variables para acumular el movimiento que no son parte del estado
   const accumX: number[] = []
   const accumY: number[] = []
@@ -33,7 +31,7 @@ const useStoreHumans = create<StateType>((set, get) => {
         dirY: 0.25,
         speed: 2.55,
         size: 25,
-        src: img2.src,
+        src: undefined,
       },
       {
         x: 100,
@@ -42,7 +40,7 @@ const useStoreHumans = create<StateType>((set, get) => {
         dirY: 1,
         speed: 2.55,
         size: 25,
-        src: img2.src,
+        src: undefined,
       },
       {
         x: 150,
@@ -51,7 +49,7 @@ const useStoreHumans = create<StateType>((set, get) => {
         dirY: 0.75,
         speed: 2.55,
         size: 25,
-        src: img1.src,
+        src: undefined,
       },
       {
         x: 40,
@@ -60,7 +58,7 @@ const useStoreHumans = create<StateType>((set, get) => {
         dirY: 0.5,
         speed: 2.55,
         size: 25,
-        src: img1.src,
+        src: undefined,
       },
       {
         x: 160,
@@ -69,7 +67,7 @@ const useStoreHumans = create<StateType>((set, get) => {
         dirY: 0.25,
         speed: 2.55,
         size: 25,
-        src: img1.src,
+        src: undefined,
       },
     ],
     move: (id: number, delta: number) =>

@@ -1,11 +1,11 @@
-import useStoreHero from '@/app/store/useStoreHero'
-import { AnimatedSprite } from '@pixi/react'
-import { useTick, useApp } from '@pixi/react'
-import { useEffect, useState, useRef } from 'react'
 import * as PIXI from 'pixi.js'
 import useStoreEnemies from '@/app/store/useStoreEnemies'
 import useStoreHumans from '@/app/store/useStoreHumans'
 import useStore from '@/app/store/useStore'
+import useStoreHero from '@/app/store/useStoreHero'
+import { useEffect, useState, useRef } from 'react'
+import { useTick, useApp } from '@pixi/react'
+import { AnimatedSprite } from '@pixi/react'
 
 const Hero = () => {
   const { gameStatus, addScore, score, screenHeight, screenWidth } = useStore()
@@ -43,7 +43,9 @@ const Hero = () => {
     const loadTextures = async () => {
       try {
         // Cargar el spritesheet y la imagen
-        const spriteSheet = await PIXI.Assets.load('spritesheet_hero.json')
+        const spriteSheet = await PIXI.Assets.load(
+          `${process.env.NEXT_PUBLIC_API_LOCAL}/spritesheet_hero.json`,
+        )
         const { animations, textures } = spriteSheet
         const frames1 = animations.fly || []
         const frames2 = animations.sun || []

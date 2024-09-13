@@ -1,5 +1,5 @@
 import React from 'react'
-import Hero from './hero'
+import Hero from '@/app/components/hero/hero'
 import useKeyboard from '@/app/hooks/useKeyboard'
 import useStoreHero from '@/app/store/useStoreHero'
 

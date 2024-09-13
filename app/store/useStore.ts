@@ -15,8 +15,8 @@ type StateType = {
 }
 
 const useStore = create<StateType>((set) => ({
-  screenWidth: 800,
-  screenHeight: 800,
+  screenWidth: 600,
+  screenHeight: 400,
   gameStatus: 'waiting',
   score: 0,
   imageDataUrl: '',

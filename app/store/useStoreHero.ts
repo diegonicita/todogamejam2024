@@ -31,8 +31,8 @@ const useStoreHero = create<StateType>((set) => {
       speed: 5,
       size: 25,
     },
-    health: 10,
-    lifes: 1,
+    health: 100,
+    lifes: 5,
     move: (newX: number, newY: number) =>
       set((state) => ({
         hero: {
@@ -82,6 +82,8 @@ const useStoreHero = create<StateType>((set) => {
           speed: 5,
           size: 25,
         },
+        lifes:5,
+        health:100
       })),
     getDamage: () =>
       set((state) => {

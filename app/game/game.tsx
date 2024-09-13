@@ -2,19 +2,19 @@
 'use client'
 import { Sprite, Stage, Container, Text } from '@pixi/react'
 import { TextStyle } from 'pixi.js'
-import useMounted from './hooks/useMounted'
+import useMounted from '../hooks/useMounted'
 import useStore from '@/app/store/useStore'
 import HeroController from '@/app/components/hero/heroController'
-import EnemyController from './components/enemies/enemyController'
-import useStoreEnemies from './store/useStoreEnemies'
-import useStoreHero from './store/useStoreHero'
+import EnemyController from '../components/enemies/enemyController'
+import useStoreEnemies from '../store/useStoreEnemies'
+import useStoreHero from '../store/useStoreHero'
 import dynamic from 'next/dynamic'
-import HumanController from './components/humans/humanController'
-import Heart from './components/svgs/heart'
-import GrayHeart from './components/svgs/grayHeart'
-import Screenshot from './components/screenshot/screenshot'
+import HumanController from '../components/humans/humanController'
+import Heart from '../components/svgs/heart'
+import GrayHeart from '../components/svgs/grayHeart'
+import Screenshot from '../components/screenshot/screenshot'
 
-const Music = dynamic(() => import('./components/music/music'))
+const Music = dynamic(() => import('../components/music/music'))
 
 export default function Game({ imageUrl }: { imageUrl: string }) {
   const { isMounted } = useMounted()
@@ -36,10 +36,10 @@ export default function Game({ imageUrl }: { imageUrl: string }) {
   }
 
   return (
-    <div className="flex justity-center text-primary text-lg">
+    <div className="flex text-primary text-lg">
       {/* {isMounted && <Music gameStatus={gameStatus} />} */}
       {isMounted && gameStatus !== 'waiting' && (
-        <div className="flex flex-wrap justify-center w-full my-10">
+        <div className="flex flex-wrap justify-center w-full">
           <div className="flex">
             <div className="hidden md:flex mt-2 px-4 md:w-40 md:flex-col md:gap-4">
               <div>
@@ -119,12 +119,12 @@ export default function Game({ imageUrl }: { imageUrl: string }) {
                   </Container>
                 )}
               </Stage>
-              <div className="flex justify-center my-8 text-neutral flex-col items-center">
+              {/* <div className="flex justify-center my-8 text-neutral flex-col items-center">
                 <div>Screen Shot</div>
-                <div className="h-96 w-96 border-4 border-red-500">
+                <div className="h-44 w-44 border-4 border-red-500">
                   <img src={imageDataUrl} alt="Generated Texture" />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
