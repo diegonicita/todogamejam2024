@@ -1,8 +1,8 @@
+import useStoreHumans from '@/app/store/useStoreHumans'
 import { AnimatedSprite, Sprite, useTick } from '@pixi/react'
 import { useEffect, useState } from 'react'
 import * as PIXI from 'pixi.js'
 import useStore from '@/app/store/useStore'
-import useStoreHumans from '@/app/store/useStoreHumans'
 
 const Human = ({ id }: { id: number }) => {
   const { gameStatus } = useStore()
@@ -42,10 +42,7 @@ const Human = ({ id }: { id: number }) => {
     const loadTextures = async () => {
       try {
         // Cargar el spritesheet y la imagen
-        // Cargar el spritesheet y la imagen
-        const spriteSheet = await PIXI.Assets.load(
-          `${process.env.NEXT_PUBLIC_API_LOCAL}/spritesheet_human.json`,
-        )
+        const spriteSheet = await PIXI.Assets.load('spritesheet_human.json')
         const { animations, textures } = spriteSheet
         const frames = animations.walk || []
         setFrames(frames)

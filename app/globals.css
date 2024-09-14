@@ -16,15 +16,19 @@
   }
 }
 
+body {
+  
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
 
-.background-image {
+.backgroundImage {
   background-image: url('/back_CC0.webp');
   background-size: cover;
   background-position: center;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
 }

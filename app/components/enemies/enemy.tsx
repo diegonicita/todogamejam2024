@@ -1,6 +1,6 @@
 import useStore from '@/app/store/useStore'
 import useStoreEnemies from '../../store/useStoreEnemies'
-import { Sprite, useTick } from '@pixi/react'
+import { SimpleMesh, Sprite, useTick } from '@pixi/react'
 
 const Enemy = ({ id }: { id: number }) => {
   const { gameStatus } = useStore()

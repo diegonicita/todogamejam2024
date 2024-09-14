@@ -15,14 +15,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="background-image">
+    <html lang="en" className="backgroundImage">
       <body className={inter.className}>
-        <div className="navbar justify-center">
-          <div className="text-lg">
-            React and Pixi: A Guide to Making Your Game
+        <div className="navbar bg-primary text-primary-content justify-center">
+          <div className="text-3xl">
+            Fuera de Control (Nick3d)
           </div>
         </div>
-        <div className="h-full">{children}</div>
+        {children}
       </body>
     </html>
   )

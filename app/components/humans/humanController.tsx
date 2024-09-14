@@ -1,5 +1,5 @@
 import React from 'react'
-import Human from '@/app/components/humans/human'
+import Human from './human'
 import useStore from '@/app/store/useStoreHumans'
 
 const HumanController = () => {

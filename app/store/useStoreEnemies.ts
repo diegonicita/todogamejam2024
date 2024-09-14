@@ -1,5 +1,7 @@
 import { create } from 'zustand'
 import useStore from './useStore'
+import img1 from '@/public/chicken.png'
+import img2 from '@/public/parrot.png'
 import img3 from '@/public/ship.png'
 
 type Entity = {

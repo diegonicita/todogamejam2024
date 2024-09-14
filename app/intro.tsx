@@ -1,12 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
 'use client'
-import useMounted from '../hooks/useMounted'
+import useMounted from './hooks/useMounted'
 import useStore from '@/app/store/useStore'
 import dynamic from 'next/dynamic'
-import Keyboard from '../components/keyboard/keyboard'
+import Keyboard from './components/keyboard/keyboard'
 
-const Music = dynamic(() => import('../components/music/music'))
+const Music = dynamic(() => import('./components/music/music'))
 
 export default function Game({
   imageUrl,
@@ -99,9 +99,8 @@ export default function Game({
             <div className="max-w-prose text-balance">
               <div className="mt-4  font-bold"> Tutorial en Español </div>
               <div>
-                Miles de extraterrestres estan volando por el espacio fuera de
-                control
-                <span className="font-bold"> ¡Rescatalos!</span>
+                Miles de extraterrestres estan volando por el espacio fuera de control
+              <span className="font-bold"> ¡Rescatalos!</span>
               </div>
               <div>
                 Eres un heroe alado: si te aproximas a ellos sumas puntos
