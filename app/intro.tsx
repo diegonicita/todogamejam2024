@@ -6,8 +6,6 @@ import useStore from '@/app/store/useStore'
 import dynamic from 'next/dynamic'
 import Keyboard from './components/keyboard/keyboard'
 
-const Music = dynamic(() => import('./components/music/music'))
-
 export default function Game({
   imageUrl,
   slug,
